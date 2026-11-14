@@ -1,73 +1,122 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#090909">
-  <title>Robux Store — Pacotes</title>
+  <title>Robux Store</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar">
-    <button class="menu" aria-label="Menu">☰</button>
-    <a class="brand" href="#" aria-label="Robux Store">ROBUX<span>STORE</span></a>
-    <div class="header-right">
-      <span class="online"><i></i><b id="visitorCount">1.000+</b> visitantes <small>(demo)</small></span>
-      <button class="login" id="loginBtn">◎ Entrar</button>
+
+<header class="topbar">
+  <button class="menu">☰</button>
+  <div class="logo">BONOXS</div>
+
+  <div class="online">
+    <span class="dot"></span>
+    <span id="visitorCount">1.000+</span>
+    <small> visitantes (demo)</small>
+  </div>
+
+  <button class="login">◎ Entrar</button>
+</header>
+
+<main>
+  <section id="storePage">
+
+    <div class="search">
+      ⌕ <span>Busque jogos, gift cards e mais</span>
     </div>
-  </header>
 
-  <main>
-    <section id="storePage">
-      <div class="search">⌕ <span>Busque pacotes e ofertas</span></div>
-
-      <section class="hero">
-        <div class="hero-shade"></div>
-        <div class="hero-content">
-          <p class="crumb">Início › Roblox</p>
-          <h1>ROBUX</h1>
-          <p class="hero-sub">Escolha seu pacote e continue para o pagamento</p>
-          <div class="trust">
-            <span>✓ Loja independente</span><span>⚡ Pix</span><span>▣ Copia e cola</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="packages-section">
-        <h2><b>1</b> ESCOLHA SEU PACOTE</h2>
-        <p class="notice">Demonstração de loja independente. Confira o destinatário Pix antes de pagar.</p>
-        <div class="packages" id="packages"></div>
-      </section>
-    </section>
-
-    <section id="paymentPage" class="hidden">
-      <button class="back" id="backBtn">‹ Voltar aos pacotes</button>
-      <div class="payment-wrap">
-        <h1>Quase lá! Seu pedido foi criado.</h1>
-        <p class="lead">Confira os dados abaixo para concluir a simulação de pagamento.</p>
-        <div class="payment-card">
-          <h2>Pagamento via Pix</h2>
-          <div class="amount" id="paymentAmount">R$ 9,99</div>
-          <div class="detail"><span>Pacote</span><strong id="paymentPackage">415 Robux</strong></div>
-          <div class="detail"><span>Destinatário Pix</span><strong>MIKAEL EDUARDO RODRIGUES</strong></div>
-          <hr>
-          <h3>Pague com o código Pix Copia e Cola</h3>
-          <p>Acesse seu aplicativo bancário, escolha Pix Copia e Cola e confira o nome do destinatário antes de confirmar.</p>
-          <textarea id="pixCode" readonly aria-label="Código Pix"></textarea>
-          <button class="copy-btn" id="copyBtn">▢ Copiar código Pix</button>
-          <p class="copy-status" id="copyStatus" aria-live="polite"></p>
-          <p class="warning">Importante: este site é um modelo independente. O Pix será direcionado ao destinatário identificado acima. Não conclua o pagamento se os dados não corresponderem ao que você espera.</p>
+    <section class="banner">
+      <div class="banner-content">
+        <p>Início › Roblox</p>
+        <h1>ROBLOX</h1>
+        <p>Escolha seu pacote de Robux</p>
+        <div class="trust">
+          ✓ Loja independente
+          <span>⚡ Pix</span>
+          <span>▣ Copia e cola</span>
         </div>
       </div>
     </section>
-  </main>
 
-  <div class="toast" id="toast" role="status" aria-live="polite">
-    <span class="toast-dot"></span><span id="toastText">Aviso de demonstração</span>
-    <small>NOTIFICAÇÃO DEMO</small>
-  </div>
+    <h2 class="section-title">
+      <span>1</span> ESCOLHA SEU PACOTE
+    </h2>
 
-  <footer>ROBUX STORE · Modelo demonstrativo independente · Não afiliado à Roblox Corporation.</footer>
-  <script src="script.js"></script>
+    <div class="packages" id="packages"></div>
+
+  </section>
+
+  <section id="paymentPage" class="hidden">
+
+    <button class="back" id="backBtn">
+      ‹ Voltar aos pacotes
+    </button>
+
+    <div class="payment-wrap">
+      <h1>Quase lá! Seu pedido foi criado.</h1>
+
+      <p class="subtitle">
+        Confira os dados abaixo para concluir o pagamento.
+      </p>
+
+      <div class="payment-card">
+
+        <h2>Pague via Pix para concluir sua compra</h2>
+
+        <div class="amount" id="paymentAmount"></div>
+
+        <div class="detail">
+          <span>Pacote</span>
+          <strong id="paymentPackage"></strong>
+        </div>
+
+        <div class="detail">
+          <span>Destinatário</span>
+          <strong>MIKAEL EDUARDO RODRIGUES</strong>
+        </div>
+
+        <hr>
+
+        <h3>Pague com o código Pix Copia e Cola</h3>
+
+        <p>
+          Acesse seu banco, escolha Pix Copia e Cola
+          e confira o destinatário antes de confirmar.
+        </p>
+
+        <textarea id="pixCode" readonly></textarea>
+
+        <button class="copy-btn" id="copyBtn">
+          ▢ COPIAR CÓDIGO PIX
+        </button>
+
+        <p id="copyStatus"></p>
+
+        <div class="warning">
+          Confira o valor e o nome do destinatário
+          no aplicativo bancário antes de realizar
+          qualquer pagamento.
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="toast" id="toast">
+  <span class="dot"></span>
+  <span id="toastText"></span>
+  <small>NOTIFICAÇÃO DEMONSTRATIVA</small>
+</div>
+
+<footer>
+  Loja independente demonstrativa. Não afiliada à Roblox Corporation.
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
