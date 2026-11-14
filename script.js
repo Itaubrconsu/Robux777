@@ -1,4 +1,10 @@
 
+// ======================================
+// ROBUX STORE - JAVASCRIPT COMPLETO
+// ======================================
+
+// PACOTES E CÓDIGOS PIX
+
 const products = [
   {
     robux: 415,
@@ -27,15 +33,21 @@ const products = [
   }
 ];
 
+// ÍCONE ROBUX
+
 const iconUrl =
-  "https://d148q8eudkfkrh.cloudfront.net/pdp/roblox/96237769.webp";
+"https://d148q8eudkfkrh.cloudfront.net/pdp/roblox/96237769.webp";
+
+// ELEMENTOS DO SITE
 
 const packages = document.getElementById("packages");
-
 const storePage = document.getElementById("storePage");
 const paymentPage = document.getElementById("paymentPage");
 
-// Criar os cinco pacotes
+// ======================================
+// CRIAR PACOTES AUTOMATICAMENTE
+// ======================================
+
 products.forEach((product, index) => {
 
   const button = document.createElement("button");
@@ -61,9 +73,13 @@ products.forEach((product, index) => {
   });
 
   packages.appendChild(button);
+
 });
 
-// Abrir pagamento correspondente
+// ======================================
+// ABRIR SEGUNDA PÁGINA DE PAGAMENTO
+// ======================================
+
 function openPayment(index) {
 
   const product = products[index];
@@ -86,9 +102,13 @@ function openPayment(index) {
     top: 0,
     behavior: "smooth"
   });
+
 }
 
-// Voltar para a loja
+// ======================================
+// VOLTAR PARA A LOJA
+// ======================================
+
 document.getElementById("backBtn").addEventListener("click", () => {
 
   paymentPage.classList.add("hidden");
@@ -98,9 +118,13 @@ document.getElementById("backBtn").addEventListener("click", () => {
     top: 0,
     behavior: "smooth"
   });
+
 });
 
-// Copiar Pix
+// ======================================
+// COPIAR CÓDIGO PIX
+// ======================================
+
 document.getElementById("copyBtn").addEventListener("click", async () => {
 
   const field = document.getElementById("pixCode");
@@ -110,61 +134,97 @@ document.getElementById("copyBtn").addEventListener("click", async () => {
 
     await navigator.clipboard.writeText(code);
 
+    document.getElementById("copyStatus").textContent =
+      "Código copiado! Confira os dados no banco.";
+
   } catch (error) {
 
+    field.focus();
     field.select();
-    field.setSelectionRange(0, code.length);
 
     const success = document.execCommand("copy");
 
-    if (!success) {
-      document.getElementById("copyStatus").textContent =
-        "Selecione e copie o código manualmente.";
-      return;
-    }
+    document.getElementById("copyStatus").textContent =
+      success
+        ? "Código copiado! Confira os dados no banco."
+        : "Selecione e copie o código manualmente.";
+
   }
 
-  document.getElementById("copyStatus").textContent =
-    "Código copiado! Confira o destinatário no banco.";
 });
 
-// Notificações demonstrativas
-const messages = [
-  "Demonstração: um visitante está olhando os pacotes.",
-  "Demonstração: alguém selecionou um pacote.",
-  "Demonstração: um visitante está conferindo o Pix."
+// ======================================
+// NOTIFICAÇÕES DE COMPRAS DEMONSTRATIVAS
+// ======================================
+
+const demoPurchases = [
+  { robux: 415, price: "9,99" },
+  { robux: 500, price: "15,00" },
+  { robux: 1000, price: "29,99" },
+  { robux: 1149, price: "39,99" },
+  { robux: 1686, price: "59,00" }
 ];
 
-let messageIndex = 0;
+let lastPurchase = -1;
 
-function showNotification(message) {
+function showRandomPurchase() {
 
   const toast = document.getElementById("toast");
+  const toastText = document.getElementById("toastText");
 
-  document.getElementById("toastText").textContent = message;
+  // Escolher pacote aleatório sem repetir
+  // imediatamente o pacote anterior
+
+  let randomIndex;
+
+  do {
+    randomIndex = Math.floor(
+      Math.random() * demoPurchases.length
+    );
+  } while (
+    demoPurchases.length > 1 &&
+    randomIndex === lastPurchase
+  );
+
+  lastPurchase = randomIndex;
+
+  const purchase = demoPurchases[randomIndex];
+
+  toastText.textContent =
+    `Compra demonstrativa: pacote de ${purchase.robux} Robux por R$ ${purchase.price}`;
 
   toast.classList.add("show");
 
+  // Notificação permanece visível por 5 segundos
+
   setTimeout(() => {
     toast.classList.remove("show");
-  }, 4000);
+  }, 5000);
+
+  // Próxima notificação entre 10 e 15 segundos
+
+  const nextTime =
+    10000 + Math.random() * 5000;
+
+  setTimeout(showRandomPurchase, nextTime);
+
 }
 
-// Exibir notificações de demonstração
-setTimeout(() => {
+// Primeira notificação após 4 segundos
 
-  showNotification(messages[messageIndex]);
+setTimeout(showRandomPurchase, 4000);
 
-  setInterval(() => {
+// ======================================
+// CONTADOR DEMONSTRATIVO DE VISITANTES
+// ======================================
 
-    messageIndex =
-      (messageIndex + 1) % messages.length;
+const visitorCount =
+  document.getElementById("visitorCount");
 
-    showNotification(messages[messageIndex]);
+if (visitorCount) {
+  visitorCount.textContent = "1.000+";
+}
 
-  }, 15000);
-
-}, 5000);
-
-// Contador demonstrativo, não representa visitantes reais
-document.getElementById("visitorCount").textContent = "1.000+";
+// ======================================
+// FIM DO JAVASCRIPT
+// ======================================
