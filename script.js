@@ -191,7 +191,7 @@ function showRandomPurchase() {
   const purchase = demoPurchases[randomIndex];
 
   toastText.textContent =
-    `Compra demonstrativa: pacote de ${purchase.robux} Robux por R$ ${purchase.price}`;
+    `Compra feita: pacote de ${purchase.robux} Robux por R$ ${purchase.price}`;
 
   toast.classList.add("show");
 
