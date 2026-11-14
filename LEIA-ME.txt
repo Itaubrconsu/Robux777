@@ -1,0 +1,19 @@
+ROBUX STORE — MODELO DEMONSTRATIVO
+
+Arquivos:
+- index.html: estrutura das duas páginas
+- style.css: visual responsivo
+- script.js: pacotes, seleção, Pix Copia e Cola e notificações demonstrativas
+
+Como abrir:
+1. Extraia o ZIP.
+2. Coloque o banner fornecido em uma pasta chamada "assets".
+3. Renomeie o banner para "RobuxHeatWave.png".
+4. Abra index.html no navegador.
+
+O ícone Robux é carregado pelo link fornecido. O banner está referenciado localmente porque foi enviado apenas o nome do arquivo, sem URL completa.
+
+IMPORTANTE:
+Este é um modelo independente/demonstrativo, não afiliado à Roblox ou à Bonoxs.
+As notificações e o número de visitantes são explicitamente demonstrativos, não dados reais.
+Os códigos Pix foram inseridos exatamente na ordem e nos valores enviados. Antes de publicar, valide cada código e o destinatário com o banco/provedor de pagamento.
